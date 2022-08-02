@@ -1,0 +1,23 @@
+html {
+    height: 100%;
+    width: 100%;
+    font-size: 14px;
+}
+
+body {
+    background-color: lightgray;
+}
+
+canvas {
+    border: solid;
+    border-color: rgba(0, 0, 0, .1);
+}
+
+.overlay {
+    margin-left: 0.5%; 
+    margin-top: 0.5%;
+    position: absolute;
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 14px;
+}
+
