@@ -1,5 +1,5 @@
 
-import { Grid } from "./grid.js";
+import { NodeManager } from "./grid.js";
 import { Canvas } from "./canvas.js";
 import { GameOfLife } from "./game.js";
 import { Patterns } from "./patterns.js";
@@ -9,16 +9,12 @@ import { Config } from "./config.js";
 
 let stats = new Statistics();
 
-let grid = new Grid(
-    Config.CANVAS_WIDTH*Config.GRID_WIDTH_MULTIPLIER,
-    Config.CANVAS_HEIGHT*Config.GRID_HEIGHT_MULTIPLIER,
+let grid = new NodeManager(
     stats
 );
 
 let canvas = new Canvas(
-    document.getElementById('gol'),
-    Config.CANVAS_WIDTH,
-    Config.CANVAS_HEIGHT
+    document.getElementById('gol')
 );
 
 let gol = new GameOfLife(
@@ -244,8 +240,6 @@ document.addEventListener("keydown", (e) => {
 });
 
 window.onload = () => {
-    canvas.element().height = innerHeight;
-    canvas.element().width = innerWidth;
     canvas.element().style.cursor = pan
         ? 'grab'
         : 'pointer';

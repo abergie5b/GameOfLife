@@ -1,0 +1,5 @@
+.tern-config
+jsconfig.json
+*.swp
+*.swo
+tags

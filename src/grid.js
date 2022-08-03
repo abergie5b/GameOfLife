@@ -2,7 +2,7 @@ import { Node } from "./node.js";
 import { Patterns } from "./patterns.js";
 import { Config } from "./config.js";
 
-export class Grid {
+export class NodeManager {
     #width;
     #height;
     #stats
@@ -15,9 +15,9 @@ export class Grid {
     #MAX_STROKE_EMPTYCELLX;
     #MAX_STROKE_EMPTYCELLY;
 
-    constructor(width, height, stats) {
-        this.#width = width;
-        this.#height = height;
+    constructor(stats) {
+        this.#width = innerWidth*Config.GRID_WIDTH_MULTIPLIER;
+        this.#height = innerHeight*Config.GRID_HEIGHT_MULTIPLIER;
         this.#stats = stats;
         this.#grid = [];
         this.#size = Config.GRID_CELL_SIZE;

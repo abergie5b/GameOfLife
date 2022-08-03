@@ -8,10 +8,10 @@ export class Canvas {
     #translateX;
     #translateY;
 
-    constructor(element, width, height) {
+    constructor(element) {
         this.#element = element;
-        this.#element.width = width;
-        this.#element.height = height;
+        this.#element.width = innerWidth;
+        this.#element.height = innerHeight;
 
         this.#ctx = element.getContext('2d');
         this.#scaleX = Config.CANVAS_SCALEX;
@@ -26,7 +26,7 @@ export class Canvas {
     scaleX() { return this.#scaleX; }
     scaleY() { return this.#scaleY; }
 
-    scale() { 
+    applyScale() { 
         this.#ctx.scale(
             this.#scaleX, 
             this.#scaleY
@@ -34,7 +34,6 @@ export class Canvas {
     }
 
     applyTranslate() {
-        this.#ctx.save();
         this.#ctx.translate(
             this.#translateX, 
             this.#translateY
@@ -64,10 +63,9 @@ export class Canvas {
         this.#ctx.clearRect(
             0, 
             0, 
-            this.#element.width, 
-            this.#element.height
+            innerWidth,
+            innerHeight
         );
     }
-
 }
 

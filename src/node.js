@@ -1,15 +1,15 @@
 
 export class Node {
-    #width
-    #height
-    #x
-    #y
-    #cachedIsAlive
-    #isAlive
-    #alives
-    #isTouched
-    #lastGenerationTouched
-
+    #width;
+    #height;
+    #x;
+    #y;
+    #cachedIsAlive;
+    #isAlive;
+    #alives;
+    #isTouched;
+    #lastGenerationTouched;
+;
     constructor(width, height, x, y, isAlive) {
         this.#width = width;
         this.#height = height;
@@ -51,7 +51,7 @@ export class Node {
         }
         else if (this.#isTouched && !this.#isAlive) {
             let g = 255 + (this.#lastGenerationTouched - generation) * 2;
-            ctx.strokeStyle = `rgba(0, ${g}, 0, 0.75)`;
+            ctx.strokeStyle = `rgba(50, ${g}, 50, 0.5)`;
             ctx.strokeRect(
                 this.#x,
                 this.#y,

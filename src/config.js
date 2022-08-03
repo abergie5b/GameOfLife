@@ -4,8 +4,6 @@ export class Config {
     static GAME_FPS = 60;
     static GAME_INITIAL_PATTERN = Patterns.StairstepNonomino;
 
-    static CANVAS_WIDTH = 1350;
-    static CANVAS_HEIGHT = 650;
     static CANVAS_SCALEX = 1;
     static CANVAS_SCALEY = 1;
     static CANVAS_TRANSLATEX = 1;
@@ -14,7 +12,7 @@ export class Config {
 
     static GRID_WIDTH_MULTIPLIER = 5;
     static GRID_HEIGHT_MULTIPLIER = 5;
-    static GRID_CELL_SIZE = 10;
+    static GRID_CELL_SIZE = 20;
     static GRID_NOSHOW_PERCENT = 0.4;
     static GRID_RENDER_BY_DEFAULT = false;
     static GRID_INITIAL_PATTERN_STARTCOORDS_PERCENT = 0.5;

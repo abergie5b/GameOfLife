@@ -61,13 +61,14 @@ export class GameOfLife {
 
     draw() {
         this.#canvas.clear();
-        this.#canvas.applyTranslate();
-        this.#canvas.scale();
+        this.#canvas.context().save();
+            this.#canvas.applyTranslate();
+            this.#canvas.applyScale();
 
-        this.#grid.draw(
-            this.#canvas.context(), 
-            this.#generations
-        );
+            this.#grid.draw(
+                this.#canvas.context(), 
+                this.#generations
+            );
         this.#canvas.restore();
     }
 
