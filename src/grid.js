@@ -56,7 +56,7 @@ export class Grid {
                         [x-initialPatternStartCoords[0] - 1] === 1
                         ? true
                         : false;
-                        
+
                 }
                 let node = new Node(
                     this.#size,
@@ -181,7 +181,7 @@ export class Grid {
                 if (this.#drawCellsIsEnabled) {
                     if ((y < this.#gridSizeY - this.#MAX_STROKE_EMPTYCELLY && y > this.#MAX_STROKE_EMPTYCELLY)
                      && (x < this.#gridSizeX - this.#MAX_STROKE_EMPTYCELLX && x > this.#MAX_STROKE_EMPTYCELLX)) {
-                        ctx.strokeStyle = `rgba(0, 0, 0, 0.25)`;
+                        ctx.strokeStyle = `rgba(255, 255, 255, 0.25)`;
                         ctx.strokeRect(
                             x*this.#size,
                             y*this.#size,
@@ -195,6 +195,7 @@ export class Grid {
             }
         }
     }
-    
+
 }
+
 

@@ -38,16 +38,13 @@ function start() {
 }
 
 function initTotalDrag() {
-    return { 
+    return {
         x: -grid.gridSizeX()*grid.cellSize()*Config.GRID_NOSHOW_PERCENT,
         y: -grid.gridSizeY()*grid.cellSize()*Config.GRID_NOSHOW_PERCENT
     };
 }
 
 function reset() {
-    document.getElementById('scale').innerHTML =
-        'scale:(1.00,1.00)';
-
     let size = document.getElementById('size');
     let fps = document.getElementById('fps');
     grid.size(parseInt(size.value));
@@ -115,6 +112,9 @@ var pan = Config.CANVAS_PAN_MODE_DEFAULT;
 document.getElementById('pan')
     .addEventListener('click', (e) => {
         pan = e.srcElement.checked;
+        canvas.element().style.cursor = pan
+            ? 'grab'
+            : 'pointer';
 });
 
 document.getElementById('createSoup')
@@ -142,8 +142,6 @@ document.getElementById('gol')
         if (gol.isPaused) {
             gol.draw();
         }
-        document.getElementById('scale').innerHTML = 
-            `scale:(${canvas.scaleX().toFixed(2)},${canvas.scaleY().toFixed(2)})`;
 });
 
 var drag = false;
@@ -154,13 +152,13 @@ document.getElementById('gol')
     .addEventListener('mousedown', (e) => {
         drag = true;
         if (!pan) {
-            let x = (e.offsetX 
-                + Math.abs(totalDrag.x) 
-                + endDrag.x 
+            let x = (e.offsetX
+                + Math.abs(totalDrag.x)
+                + endDrag.x
                 - startDrag.x) / canvas.scaleX();
-            let y = (e.offsetY 
-                + Math.abs(totalDrag.y) 
-                + endDrag.y 
+            let y = (e.offsetY
+                + Math.abs(totalDrag.y)
+                + endDrag.y
                 - startDrag.y) / canvas.scaleY();
 
             grid.toggleNodeAt(
@@ -199,13 +197,13 @@ document.getElementById('gol')
         e.preventDefault();
         if (drag) {
             if (!pan) {
-                let x = (e.offsetX 
-                    + Math.abs(totalDrag.x) 
-                    + endDrag.x 
+                let x = (e.offsetX
+                    + Math.abs(totalDrag.x)
+                    + endDrag.x
                     - startDrag.x) / canvas.scaleX();
-                let y = (e.offsetY 
-                    + Math.abs(totalDrag.y) 
-                    + endDrag.y 
+                let y = (e.offsetY
+                    + Math.abs(totalDrag.y)
+                    + endDrag.y
                     - startDrag.y) / canvas.scaleY();
                 let node = grid.getNodeAt(x, y);
                 if (!node.isAlive()) {
@@ -230,7 +228,6 @@ document.getElementById('gol')
                 }
 
             }
-
         }
 });
 
@@ -246,8 +243,13 @@ document.addEventListener("keydown", (e) => {
     }
 });
 
-
 window.onload = () => {
+    canvas.element().height = innerHeight;
+    canvas.element().width = innerWidth;
+    canvas.element().style.cursor = pan
+        ? 'grab'
+        : 'pointer';
+
     document.getElementById('size').value = Config.GRID_CELL_SIZE;
     document.getElementById('fps').value = Config.GAME_FPS;
     document.getElementById('drawCellsEnabled').checked = Config.GRID_RENDER_BY_DEFAULT;
@@ -258,21 +260,18 @@ window.onload = () => {
 
     let select = document.getElementById('patterns');
     for (let pattern of Object.keys(Patterns.All)) {
-        let button = document.createElement('button');
-        button.type = 'button';
-        button.id = pattern;
-        button.innerHTML = pattern;
-        select.appendChild(button);
-
-        document.getElementById(pattern)
-            .addEventListener('click', (e) => {
-                gol.initialPattern(Patterns.All[pattern]);
-                reset();
-        });
-
+        let option = document.createElement('option');
+        option.value = pattern;
+        option.text = pattern;
+        select.appendChild(option);
     }
+    select.addEventListener('change', function(e) {
+        gol.initialPattern(Patterns.All[e.target.value]);
+        reset();
+    });
 
     gol.init();
     gol.draw();
 }
+
 

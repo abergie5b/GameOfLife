@@ -1,0 +1,53 @@
+html,
+body {
+    font-family: 'K2D', serif;
+}
+
+canvas {
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-color: black;
+}
+
+button, 
+input, 
+label, 
+select {
+    border-color: rgba(255, 255, 255, 0.5);
+    background-color: black;
+    color: white;
+    font-family: 'K2D', serif;
+}
+
+span {
+    color: white;
+}
+
+.overlay {
+    position: absolute;
+    font-size: 14px;
+    border-color: rgba(255, 255, 255, 0.5);
+    border-style: solid;
+    bottom: 0;
+    left: 0;
+    padding:0.5%;
+    margin:5px;
+    width:12%;
+    text-align: left;
+}
+
+.overlay-right {
+    left: auto;
+    right: 0;
+    bottom: 0;
+    border-style: none;
+    border-color: none;
+    width:20%;
+}
+
+.row {
+    padding-top: 3%;
+    color: white;
+}
+

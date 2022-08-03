@@ -41,8 +41,8 @@ export class Node {
     draw(ctx, generation)
     {
         if (this.#isAlive) {
-            ctx.fillStyle = `rgba(0, 0, 255, 0.5)`;
-            ctx.fillRect(
+            ctx.strokeStyle = `rgba(0, 0, 255, 1)`;
+            ctx.strokeRect(
                 this.#x,
                 this.#y,
                 this.#width,
@@ -51,8 +51,8 @@ export class Node {
         }
         else if (this.#isTouched && !this.#isAlive) {
             let g = 255 + (this.#lastGenerationTouched - generation) * 2;
-            ctx.fillStyle = `rgba(0, ${g}, 0, 0.25)`;
-            ctx.fillRect(
+            ctx.strokeStyle = `rgba(0, ${g}, 0, 0.75)`;
+            ctx.strokeRect(
                 this.#x,
                 this.#y,
                 this.#width,
@@ -62,4 +62,5 @@ export class Node {
         }
     }
 }
+
 
